@@ -1072,3 +1072,76 @@ header {
         transition: left 1.5s ease 0.4s; 
     }
 }
+
+/* ==========================================================================
+   MOBILE AUTO-REVEALS (OFERTA, CENNIK, PROCES, SOCIALE) & BUTTON PULSE
+   ========================================================================== */
+
+/* --- 1. CONTINUOUS PULSE FOR HERO BUTTON (Desktop & Mobile) --- */
+@keyframes goldPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+.hero .btn {
+    animation: goldPulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.hero .btn:hover {
+    animation: none; /* Stops pulsing when mouse hovers over it */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* --- 2. MOBILE AUTO-REVEAL FOR CARDS ON SCROLL --- */
+@media (max-width: 768px) {
+    
+    /* CENNIK (Pricing Cards) - Auto Reveal */
+    .price-card.active {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        border-color: var(--accent-color);
+    }
+
+    /* OFERTA (Offer Items) - Auto Reveal */
+    .offer-item.active {
+        transform: translateY(-10px);
+        border-color: var(--accent-color);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+    }
+
+    /* PROCES (Process Steps) - Auto Reveal */
+    .step.active {
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transform: translateX(10px);
+        border-bottom: 1px solid var(--accent-color);
+    }
+    
+    .step.active .step-num {
+        color: var(--accent-color);
+        -webkit-text-stroke: 0px;
+        opacity: 1;
+    }
+    
+    .step.active .step-icon {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    /* SOCIAL MEDIA CARDS - Auto Reveal */
+    .social-card.active {
+        border-color: var(--accent-color);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+    }
+    
+    .social-card.active .social-icon {
+        color: var(--accent-color);
+    }
+}

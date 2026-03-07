@@ -1,0 +1,1051 @@
+:root {
+    /* ZMIANA: Jasny, przestronny motyw */
+    --bg-color: #fcfcfc;      /* Prawie biały, "papierowy" */
+    --text-color: #333333;    /* Ciemny grafit dla czytelności */
+    --text-light: #666666;    /* Kolor opisów */
+    
+    /* ZŁOTO - Pozostaje bez zmian, świetnie gra z bielą */
+    --accent-color: #D4AF37; 
+    
+    /* CZCIONKI */
+    --font-main: 'Montserrat', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    
+    --padding-container: 5vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+
+    /* TŁO GLOBALNE: Bardzo subtelna faktura papieru/tynku */
+    /* Alternatywnie czysty gradient, jeśli wolisz gładko: */
+    /* background: linear-gradient(to bottom, #ffffff, #f4f4f4); */
+}
+
+/* --- SEPARATOR (Złota linia na białym tle) --- */
+.section-separator {
+    height: 1px;
+    width: 100%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(0,0,0,0) 90%);
+    margin: 40px 0;
+    position: relative;
+    z-index: 10;
+    opacity: 0.6;
+}
+
+/* --- KURSOR --- */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+    mix-blend-mode: multiply; /* Na białym tle 'multiply' wygląda lepiej */
+    top: 0;
+    left: 0;
+}
+
+body:hover .cursor.active {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    border: none;
+    opacity: 0.2;
+}
+
+/* --- WARIANT KURSORA DLA CIEMNYCH TEŁ (BIAŁY) --- */
+.cursor.white-theme {
+    border-color: #ffffff; 
+    mix-blend-mode: normal; /* TO JEST KLUCZ! Wyłącza efekt "znikania" bieli */
+}
+
+body:hover .cursor.white-theme.active {
+    background-color: #ffffff; 
+}
+
+/* --- TYPOGRAFIA --- */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #111;
+}
+
+.highlight {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent-color);
+    /* Złoty gradient na tekście */
+    background: linear-gradient(to right, #b88a18, #e5c55b, #b88a18);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.container {
+    padding: 0 var(--padding-container);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* PRZYCISKI - Ciemne na jasnym tle dla kontrastu */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--accent-color);
+    color: #111; /* Ciemny tekst */
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    background: transparent;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- HEADER (Białe szkło) --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px var(--padding-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    
+    /* Jasne tło z rozmyciem */
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.logo-img {
+    height: 80px;
+    width: auto;
+    display: block;
+    transition: height 0.3s;
+    /* Jeśli logo jest białe, musimy je odwrócić filtrem, ale Twoje jest złote, więc jest OK */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #333; /* Ciemne linki na jasnym tle */
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- HERO (Tu zostawiamy ciemniejszy overlay, żeby biały napis był czytelny na zdjęciach) --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center-bottom;
+    transform-origin: center bottom;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1.5s ease-in-out, transform 7s linear;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient: od jasnego do ciemnego na dole dla czytelności tekstu */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 100px;
+    color: #fff; /* W sekcji Hero tekst musi być biały, bo jest na zdjęciach */
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: #fff; 
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 600px;
+    opacity: 1;
+    margin-bottom: 40px;
+    color: #f0f0f0;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Przycisk w Hero musi być jasny */
+.hero .btn {
+    border-color: #fff;
+    color: #fff;
+}
+.hero .btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    right: var(--padding-container);
+    transform: rotate(90deg);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    color: #fff;
+    z-index: 2;
+}
+
+/* --- CENNIK (TŁO: BIAŁY MARMUR) --- */
+.pricing {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 120px 0;
+    
+}
+
+.pricing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); /* Biała mgiełka, nie czarna */
+    z-index: -1;
+}
+
+/* Karta Ceny: Biała z cieniem */
+.price-card {
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* Miękki cień */
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 60px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    border-color: var(--accent-color);
+}
+
+.price-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.price-big {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    color: #111; /* Ciemna cena */
+    line-height: 1;
+}
+
+.price-unit {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.price-desc {
+    margin-top: 20px;
+    max-width: 600px;
+    color: #666;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .price-grid { grid-template-columns: 1fr; }
+    .pricing { background-attachment: scroll; }
+}
+
+.list-title {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #111;
+    font-weight: 700;
+}
+
+.check-list li, .cross-list li {
+    list-style: none;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    color: #555; /* Ciemniejszy tekst */
+}
+.check-list li::before {
+    content: '✓';
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.cross-list li { opacity: 0.6; }
+.cross-list li::before {
+    content: '✕';
+    margin-right: 15px;
+    color: #999;
+}
+
+/* --- DLACZEGO MY (TŁO: BARDZO JASNY SZARY) --- */
+.why-us {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 100px 0;
+    
+    /* Subtelny gradient szarości */
+    background: linear-gradient(to bottom, #fcfcfc, #f2f2f2);
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    color: #111; /* Ciemny tytuł */
+    text-shadow: none;
+}
+.section-title::after {
+    content: '.';
+    color: var(--accent-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feature-box {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    padding: 50px 40px 40px; /* Zwiększony górny margines na znak wodny */
+    border-radius: 12px; /* Nieco mocniej zaokrąglone rogi */
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden; /* Ukrywa elementy wychodzące poza róg kafelka */
+    z-index: 1;
+}
+
+/* ANIMACJA 1: Pływający znak wodny w tle */
+.box-number {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.04); /* Cieniutki, szary obrys */
+    z-index: -1;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* ANIMACJA 2: Błysk (Shine) w ukryciu przed najechaniem */
+.feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Zaczyna daleko poza lewą krawędzią */
+    width: 50%;
+    height: 100%;
+    /* Gradient imitujący światło na szkle */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg); /* Pochylenie blasku */
+    transition: left 0.7s ease; /* Płynny przelot */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- ZMIANY PO NAJECHANIU MYSZKĄ (HOVER) --- */
+.feature-box:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px); /* Karta unosi się wyżej */
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.12); /* Złoty cień pod kartą */
+}
+
+/* Przelot blasku */
+.feature-box:hover::before {
+    left: 200%; /* Światło przelatuje na prawą stronę i znika */
+}
+
+/* Ożywienie znaku wodnego */
+.feature-box:hover .box-number {
+    color: rgba(212, 175, 55, 0.05); /* Wypełnia się delikatnym złotem */
+    -webkit-text-stroke: 1px var(--accent-color); /* Obrys staje się mocno złoty */
+    transform: scale(1.1) translate(-10px, 10px); /* Cyfra rośnie i "spogląda" w dół */
+}
+
+/* Teksty wewnątrz karty - podniesione nad efekty */
+.feature-box h3 {
+    margin-bottom: 15px;
+    color: #111;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2; /* Nad znakiem wodnym i blaskiem */
+}
+
+.feature-box p {
+    color: #666;
+    font-weight: 300;
+    position: relative;
+    z-index: 2; /* Nad znakiem wodnym i blaskiem */
+}
+
+/* --- PROCES (TŁO: JASNY TYNK) --- */
+.process {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 100px 0;
+    
+    /* Jasny tynk dekoracyjny */
+    background-image: url(images/Office.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    z-index: 1;
+}
+
+.process::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Rozjaśniamy tynk bielą */
+    z-index: -1;
+}
+
+.step {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Ciemna linia */
+    padding: 50px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.4s ease;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.step:hover {
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateX(10px);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.step-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.15); /* Ciemny obrys */
+    margin-right: 40px;
+    min-width: 80px;
+    transition: all 0.3s;
+    opacity: 0.5;
+}
+
+.step:hover .step-num {
+    color: var(--accent-color);
+    -webkit-text-stroke: 0px;
+    opacity: 1;
+}
+
+.step-icon {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 1.2em;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.step:hover .step-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.step-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #111;
+    font-weight: 400;
+}
+
+.step-content p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* --- OFERTA (TŁO: KRATKA NA BIELI) --- */
+.offer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 100px 0;
+    
+    /* Blueprint na białym tle */
+    background-color: #f8f8f8;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+}
+
+.offer::before { display: none; }
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.offer-item {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    border-radius: 4px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.offer-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+}
+
+.offer-item h3 {
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #111;
+    letter-spacing: 1px;
+}
+
+.offer-item h3 span { color: var(--accent-color); font-size: 1.2rem; }
+.offer-item ul { padding-left: 20px; color: #666; line-height: 1.8; }
+.offer-item ul li { margin-bottom: 8px; }
+
+/* --- GALERIA REALIZACJI (PIONOWA / MAGAZINE STYLE) --- */
+.gallery {
+    padding: 100px 0;
+    background: transparent;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Automatycznie dopasowuje kolumny. Na dużym ekranie 3-4, na telefonie 1 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px; /* Delikatnie zaokrąglone rogi */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Miękki cień */
+    background: #fff;
+}
+
+.gallery-img-wrapper {
+    position: relative;
+    width: 100%;
+    /* To jest magia: wymusza pionowe proporcje 3:4 na każdym zdjęciu! */
+    aspect-ratio: 3 / 4; 
+    overflow: hidden;
+}
+
+.gallery-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Wypełnia kadr bez zniekształcania zdjęcia */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Bardzo płynny zoom */
+}
+
+/* Opis na zdjęciu (domyślnie ukryty) */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Gradient: na dole czarny (żeby biały tekst był czytelny), u góry znika */
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    padding: 40px 30px 30px;
+    opacity: 0; 
+    transform: translateY(20px); /* Zsuwa tekst lekko w dół */
+    transition: all 0.4s ease;
+}
+
+.gallery-overlay h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+}
+
+.gallery-overlay p {
+    color: var(--accent-color); /* Złoty podtytuł */
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* --- ANIMACJE HOVER (Po najechaniu myszką) --- */
+.gallery-item:hover .gallery-img-wrapper img {
+    transform: scale(1.05); /* Zdjęcie powoli się przybliża */
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1; /* Opis się pojawia */
+    transform: translateY(0); /* Opis podjeżdża do góry */
+}
+
+/* --- FIX DLA TELEFONÓW --- */
+/* Na telefonach nie ma "najeżdżania myszką", więc wymuszamy, żeby opisy były widoczne na stałe */
+@media (max-width: 768px) {
+    .gallery-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    }
+}
+
+/* --- SOCIAL MEDIA SECTION --- */
+.socials {
+    padding: 100px 0;
+    text-align: center;
+    background: #f4f4f4; /* Bardzo jasny szary */
+}
+
+.socials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.social-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 40px;
+    width: 300px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.social-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+}
+
+.social-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #111;
+    transition: color 0.3s;
+}
+
+.social-card:hover .social-icon {
+    color: var(--accent-color);
+}
+
+.social-card h3 {
+    color: #111;
+    font-family: var(--font-display);
+    margin-bottom: 10px;
+}
+
+.social-card p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* --- KONTAKT Z FORMULARZEM (Premium Minimalist) --- */
+.contact {
+    padding: 120px 0;
+    background: #fff;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dwie równe kolumny */
+    gap: 80px;
+    align-items: center;
+}
+
+.contact-info {
+    text-align: left; /* Zmieniamy wyśrodkowanie na lewą stronę */
+}
+
+.contact-sub { 
+    text-transform: uppercase; 
+    color: var(--accent-color); 
+    margin-bottom: 20px; 
+    letter-spacing: 2px; 
+}
+
+.contact-big { 
+    font-size: clamp(2.5rem, 4vw, 4rem); 
+    line-height: 1.1; 
+    margin-bottom: 40px; 
+    font-family: var(--font-display); 
+    font-weight: 800; 
+    color: #111; 
+}
+
+.sub-text { 
+    color: #888; 
+    font-weight: 300; 
+}
+
+.contact-details-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    color: var(--accent-color);
+}
+
+/* --- KONTENER FORMULARZA --- */
+.contact-form-container {
+    background: #fcfcfc;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.input-row {
+    display: flex;
+    gap: 30px;
+}
+
+.input-row .input-group {
+    flex: 1; /* Pola w rzędzie dzielą się po równo */
+}
+
+.input-group {
+    position: relative;
+}
+
+/* Pola tekstowe - minimalizm (tylko dolna linia) */
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #111;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    background: transparent;
+    transition: border-color 0.3s;
+    font-family: var(--font-main);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Etykiety (Labels) schowane w polu jak placeholder */
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* MAGIA CSS: Pływające etykiety (Floating Labels) */
+/* Kiedy klikniesz w pole LUB kiedy nie jest puste, etykieta leci do góry */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -18px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Złota linia podczas pisania */
+.input-group input:focus,
+.input-group textarea:focus {
+    border-bottom-color: var(--accent-color);
+}
+
+/* Przycisk wysyłania */
+.modern-form .btn {
+    align-self: flex-start;
+    background: #111;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    cursor: none; /* Bo mamy swój kursor */
+}
+
+.modern-form .btn:hover {
+    background: var(--accent-color);
+    color: #111;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* --- FIX MOBILNY DLA FORMULARZA --- */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr; /* Jedna kolumna na telefonie */
+        gap: 50px;
+    }
+    .input-row {
+        flex-direction: column; /* Pola z rzędu idą jedno pod drugim */
+        gap: 35px;
+    }
+    .contact-form-container {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-img { height: 80px; }
+    .hero { padding-top: 130px; }
+    .comparison-container { height: 250px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* --- HAMBURGER MENU (Domyślnie ukryte na komputerach) --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 101; /* Zawsze na samym wierzchu, nawet nad menu */
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #333; /* Ciemne kreski, pasujące do jasnego paska */
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- WIDOK MOBILNY (Telefony i małe tablety) --- */
+@media (max-width: 768px) {
+    /* Mniejsze logo na telefonie */
+    .logo-img { height: 60px; }
+    
+    /* Mniejszy odstęp na górze pod headerem */
+    .hero { padding-top: 100px; }
+    
+    /* Pojedyncze kolumny w galeriach i cennikach */
+    .comparison-container { height: 250px; }
+    .gallery-grid, .price-grid { grid-template-columns: 1fr; }
+
+    /* Pokaż ikonę hamburgera */
+    .hamburger {
+        display: flex; 
+    }
+
+    /* Ukryj standardowe menu i zamień w panel boczny */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Schowane poza prawą krawędzią ekranu */
+        width: 250px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+    }
+
+    /* Klasa dodawana przez JS - wysuwa menu */
+    .nav-links.active {
+        right: 0; 
+    }
+
+    /* Większe linki na telefonie dla łatwiejszego klikania */
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    /* Animacja Hamburgera w "X" po kliknięciu */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0; /* Środkowa kreska znika */
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}

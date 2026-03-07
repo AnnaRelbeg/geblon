@@ -1049,3 +1049,26 @@ header {
         transform: translateY(-9px) rotate(-45deg);
     }
 }
+
+/* --- MOBILE AUTO-REVEAL FOR "DLACZEGO GEBLON" --- */
+@media (max-width: 768px) {
+    /* 1. Trigger gold shadow and border when scrolled into view */
+    .feature-box.active {
+        border-color: var(--accent-color);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.12);
+    }
+
+    /* 2. Auto-reveal the large gold watermark number */
+    .feature-box.active .box-number {
+        color: rgba(212, 175, 55, 0.05);
+        -webkit-text-stroke: 1px var(--accent-color);
+        transform: scale(1.1) translate(-10px, 10px);
+    }
+
+    /* 3. Make the glass shine sweep across automatically on scroll */
+    .feature-box.active::before {
+        left: 200%;
+        /* 1.5s duration, with a slight delay so it happens right as they read it */
+        transition: left 1.5s ease 0.4s; 
+    }
+}

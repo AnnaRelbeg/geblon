@@ -748,6 +748,138 @@ header {
     }
 }
 
+/* --- SPOTLIGHT (Wyróżniona Realizacja / Nowe Horyzonty) --- */
+.spotlight {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 90px 0;
+    background: #fdf9ef;
+    border-top: 3px solid var(--accent-color);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.spotlight-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.spotlight-main-photo {
+    margin-bottom: 14px;
+}
+
+.spotlight-img-wrap {
+    overflow: hidden;
+}
+
+.spotlight-img-wrap img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.spotlight-img-wrap:hover img {
+    transform: scale(1.04);
+}
+
+.spotlight-main-photo .spotlight-img-wrap img {
+    aspect-ratio: 4 / 3;
+}
+
+.spotlight-sub-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.spotlight-sub-photos .spotlight-img-wrap img {
+    aspect-ratio: 1 / 1;
+}
+
+.spotlight-content {
+    padding-top: 6px;
+}
+
+.spotlight-eyebrow {
+    display: block;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.spotlight-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    color: #111;
+    line-height: 1.15;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.spotlight-location-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: #999;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+.spotlight-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.spotlight-body {
+    color: #666;
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.spotlight-cta-text {
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+.spotlight .btn {
+    border-color: #111;
+    color: #111;
+    background: transparent;
+    margin-top: 0;
+}
+
+.spotlight .btn:hover {
+    background: var(--accent-color);
+    color: #111;
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 768px) {
+    .spotlight-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 /* --- SOCIAL MEDIA SECTION --- */
 .socials {
     padding: 100px 0;

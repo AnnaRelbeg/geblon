@@ -775,6 +775,7 @@ header {
 
 .spotlight-img-wrap {
     overflow: hidden;
+    position: relative;
 }
 
 .spotlight-img-wrap img {
@@ -800,6 +801,23 @@ header {
 
 .spotlight-sub-photos .spotlight-img-wrap img {
     aspect-ratio: 1 / 1;
+}
+
+
+.spotlight-photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px 8px;
+    font-style: italic;
+    pointer-events: none;
 }
 
 .spotlight-content {

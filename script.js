@@ -1,136 +1,294 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- CUSTOM CURSOR ---
-    const cursor = document.querySelector('.cursor');
-    // Dodajemy .logo-img do triggerów, aby kursor reagował na logo
-    const triggers = document.querySelectorAll('.hover-trigger, a, .btn, .logo-img');
+/* =========================================================
+   GEBLON · script.js
+   Moduły: menu mobilne, wideo w nagłówku, filtr produktów,
+   pokaz slajdów, kreator graweru, formularze.
+   ========================================================= */
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+/* ---------------------------------------------------------
+   KONFIGURACJA
+   FORM_ENDPOINT: adres formularza (np. Formspree:
+   https://formspree.io/f/XXXXXXXX). Plan Formspree z obsługą
+   załączników jest potrzebny, aby przesyłać pliki z kreatora.
+   Gdy pole jest puste, formularze otwierają program pocztowy
+   z gotową treścią (bez załączników).
+   --------------------------------------------------------- */
+const FORM_ENDPOINT = '';
+const CONTACT_EMAIL = 'grzegorz@geblon.pl';
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Menu mobilne ---------- */
+(() => {
+  const btn = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+  });
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+/* ---------- Wideo w nagłówku ----------
+   Ładowane tylko na większych ekranach, bez trybu oszczędzania
+   danych i bez ograniczonego ruchu. Na telefonach zostaje plakat. */
+(() => {
+  const video = document.querySelector('.hero__video');
+  if (!video) return;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const wide = window.matchMedia('(min-width: 768px)').matches;
+  if (reduceMotion || saveData || !wide) return;
+
+  [['webm', 'video/webm'], ['mp4', 'video/mp4']].forEach(([key, type]) => {
+    const src = video.dataset['src' + key.charAt(0).toUpperCase() + key.slice(1)];
+    if (!src) return;
+    const s = document.createElement('source');
+    s.src = src;
+    s.type = type;
+    video.appendChild(s);
+  });
+  video.muted = true;
+  video.load();
+  video.addEventListener('loadeddata', () => { video.playbackRate = 0.8; });
+  const p = video.play();
+  if (p && p.catch) p.catch(() => {});
+
+  // Pauza, gdy nagłówek nie jest widoczny (oszczędność baterii)
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { const q = video.play(); if (q && q.catch) q.catch(() => {}); }
+      else video.pause();
+    }).observe(video);
+  }
+})();
+
+/* ---------- Filtr produktów ---------- */
+(() => {
+  const chips = document.querySelectorAll('.filters .chip');
+  const cards = document.querySelectorAll('#lista-produktow .pcard');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      chips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle('is-on', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      cards.forEach((card) => { card.hidden = !(f === 'all' || card.dataset.cat === f); });
     });
+  });
+})();
 
-    triggers.forEach(trigger => {
-        trigger.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-        trigger.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-        });
+/* ---------- Pokaz slajdów (Realizacje) ---------- */
+(() => {
+  const root = document.querySelector('.show');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('.show__slide'));
+  const tag = root.querySelector('.show__tag');
+  const title = root.querySelector('.show__title');
+  const count = root.querySelector('.show__count');
+  const bar = root.querySelector('.show__bar span');
+  const thumbs = root.querySelector('.show__thumbs');
+  const n = slides.length;
+  let i = 0;
+  let timer = null;
+  const pad = (x) => String(x).padStart(2, '0');
+
+  // Miniatury budowane z obrazów slajdów
+  slides.forEach((slide, idx) => {
+    const img = slide.querySelector('img');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', slide.querySelector('figcaption').textContent);
+    const t = document.createElement('img');
+    t.src = img.getAttribute('src');
+    t.alt = '';
+    t.loading = 'lazy';
+    b.appendChild(t);
+    b.addEventListener('click', () => { go(idx); restart(); });
+    thumbs.appendChild(b);
+  });
+  const thumbBtns = Array.from(thumbs.children);
+
+  function go(next) {
+    i = (next + n) % n;
+    slides.forEach((s, idx) => {
+      const on = idx === i;
+      s.classList.toggle('is-on', on);
+      s.setAttribute('aria-hidden', String(!on));
+      if (on) { const im = s.querySelector('img'); im.loading = 'eager'; }
     });
+    thumbBtns.forEach((b, idx) => b.setAttribute('aria-current', String(idx === i)));
+    tag.textContent = slides[i].dataset.tag;
+    title.textContent = slides[i].querySelector('figcaption').textContent;
+    count.textContent = pad(i + 1) + ' / ' + pad(n);
+    bar.style.width = ((i + 1) / n * 100) + '%';
+  }
+  function start() { if (!reduceMotion && !timer) timer = setInterval(() => go(i + 1), 5500); }
+  function stop() { clearInterval(timer); timer = null; }
+  function restart() { stop(); start(); }
 
-    // --- ZMIANA KOLORU KURSORA NA CIEMNYM TLE (HERO) ---
-    const heroSection = document.querySelector('.hero');
-    
-    if (heroSection) {
-        // Kiedy myszka wjeżdża na sekcję Hero -> kursor staje się biały
-        heroSection.addEventListener('mouseenter', () => {
-            cursor.classList.add('white-theme');
+  root.querySelectorAll('.round').forEach((b) => b.addEventListener('click', () => { go(i + Number(b.dataset.dir)); restart(); }));
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', start);
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { go(i - 1); }
+    if (e.key === 'ArrowRight') { go(i + 1); }
+  });
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+  go(0);
+  start();
+})();
+
+/* ---------- Kreator graweru ---------- */
+(() => {
+  const form = document.getElementById('kreator-form');
+  if (!form) return;
+  const sizes = document.getElementById('rozmiary');
+  const surfaces = Array.from(form.querySelectorAll('.surface'));
+
+  function kind() {
+    const r = form.querySelector('input[name="produkt"]:checked');
+    return r ? r.dataset.kind : 'box';
+  }
+
+  // Zmiana produktu: tytuły pól (wieczko / wizytówka), podpowiedzi, rozmiary
+  function applyKind() {
+    const k = kind();
+    const isLight = form.querySelector('input[name="produkt"]:checked').value === 'Pudełko jasne';
+    sizes.hidden = !isLight;
+    surfaces.forEach((s) => {
+      const t = s.querySelector('.surface__title');
+      t.textContent = t.dataset[k];
+      const ta = s.querySelector('textarea');
+      ta.placeholder = ta.dataset[k];
+    });
+  }
+
+  // Tryb pola: plik / tekst + motyw / bez graweru
+  function applyMode(s) {
+    const n = s.dataset.surface;
+    const r = s.querySelector(`input[name="s${n}_tryb"]:checked`);
+    s.dataset.mode = r ? r.value : 'brak';
+  }
+
+  // Podgląd wgranych plików
+  function renderPreview(s) {
+    const box = s.querySelector('.preview');
+    box.innerHTML = '';
+    const inputs = s.querySelectorAll('input[type="file"]');
+    let any = false;
+    inputs.forEach((inp) => {
+      const f = inp.files && inp.files[0];
+      if (!f) return;
+      const visible = inp.closest('.mode') && getComputedStyle(inp.closest('.mode')).display !== 'none';
+      if (!visible) return;
+      any = true;
+      const row = document.createElement('div');
+      row.className = 'preview__item';
+      if (f.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.alt = '';
+        img.src = URL.createObjectURL(f);
+        row.appendChild(img);
+      }
+      const name = document.createElement('span');
+      name.textContent = f.name;
+      row.appendChild(name);
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.textContent = 'Usuń';
+      del.setAttribute('aria-label', 'Usuń plik ' + f.name);
+      del.addEventListener('click', () => { inp.value = ''; renderPreview(s); });
+      row.appendChild(del);
+      box.appendChild(row);
+    });
+    box.hidden = !any;
+  }
+
+  form.addEventListener('change', (e) => {
+    const t = e.target;
+    if (t.name === 'produkt') applyKind();
+    const s = t.closest('.surface');
+    if (s) { applyMode(s); renderPreview(s); }
+  });
+
+  applyKind();
+  surfaces.forEach((s) => { applyMode(s); renderPreview(s); });
+})();
+
+/* ---------- Wysyłka formularzy ---------- */
+function summarise(form) {
+  const lines = [];
+  const fd = new FormData(form);
+  for (const [key, val] of fd.entries()) {
+    if (key.startsWith('_')) continue;
+    if (val instanceof File) { if (val.name) lines.push(`${key}: plik ${val.name} (dołącz do wiadomości)`); continue; }
+    if (String(val).trim()) lines.push(`${key}: ${val}`);
+  }
+  return lines.join('\n');
+}
+
+function wireForm(id, okText) {
+  const form = document.getElementById(id);
+  if (!form) return;
+  const status = form.querySelector('.form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = 'form-status';
+    if (!form.checkValidity()) {
+      status.textContent = 'Uzupełnij imię i poprawny adres e-mail.';
+      status.classList.add('is-err');
+      form.reportValidity();
+      return;
+    }
+    // Pola wyłączone (tryb "bez graweru") nie są wysyłane
+    if (id === 'kreator-form') {
+      form.querySelectorAll('.surface').forEach((s) => {
+        s.querySelectorAll('.mode').forEach((m) => {
+          const hidden = getComputedStyle(m).display === 'none';
+          m.querySelectorAll('input, textarea').forEach((el) => { el.disabled = hidden; });
         });
-        
-        // Kiedy myszka zjeżdża z sekcji Hero -> kursor wraca do złota
-        heroSection.addEventListener('mouseleave', () => {
-            cursor.classList.remove('white-theme');
-        });
+      });
     }
 
-    // --- SCROLL REVEAL ---
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 150;
-
-        revealElements.forEach((reveal) => {
-            const elementTop = reveal.getBoundingClientRect().top;
-
-            if (elementTop < windowHeight - elementVisible) {
-                reveal.classList.add('active');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-});
-
-// --- GALERIA PRZED/PO (SLIDER) ---
-    const comparisonContainers = document.querySelectorAll('.comparison-container');
-
-    comparisonContainers.forEach(container => {
-        const slider = container.querySelector('.img-after');
-        const handle = container.querySelector('.slider-handle');
-        const imgAfterInside = slider.querySelector('img');
-        
-        // 1. Ustawienie szerokości wewnętrznego obrazka na sztywno,
-        // żeby nie skalował się podczas zwężania diva .img-after
-        // Ustawiamy go na szerokość całego kontenera
-        imgAfterInside.style.width = container.offsetWidth + 'px';
-
-        // Funkcja aktualizująca szerokość obrazka przy zmianie rozmiaru okna
-        window.addEventListener('resize', () => {
-             imgAfterInside.style.width = container.offsetWidth + 'px';
-        });
-
-        // Funkcja poruszania
-        const moveSlider = (e) => {
-            // Pobierz pozycję myszki/dotyku
-            const containerRect = container.getBoundingClientRect();
-            let x = (e.clientX || e.touches[0].clientX) - containerRect.left;
-
-            // Ograniczenia (żeby nie wyjechać poza ramkę)
-            if (x < 0) x = 0;
-            if (x > containerRect.width) x = containerRect.width;
-
-            // Ustawienie szerokości zdjęcia PO
-            slider.style.width = x + 'px';
-            
-            // Ustawienie pozycji uchwytu
-            handle.style.left = x + 'px';
-        };
-
-        // Nasłuchiwanie zdarzeń
-        container.addEventListener('mousemove', moveSlider);
-        container.addEventListener('touchmove', moveSlider);
-    });
-
-
-// --- SLIDESHOW HERO ---
- //   const slides = document.querySelectorAll('.slide');
-   // let currentSlide = 0;
-    //const slideInterval = 30000; // Czas zmiany slajdu (5000ms = 5 sekund)
-
-    //function nextSlide() {
-        // 1. Zabierz klasę .active z obecnego zdjęcia
-      //  slides[currentSlide].classList.remove('active');
-        
-        // 2. Oblicz indeks następnego zdjęcia (modulo sprawia, że wraca do 0 po ostatnim)
-        //currentSlide = (currentSlide + 1) % slides.length;
-        
-        // 3. Dodaj klasę .active do nowego zdjęcia
-        //slides[currentSlide].classList.add('active');
-    //}
-
-    // Uruchom interwał
-   // setInterval(nextSlide, slideInterval);
-
-   // --- MOBILNE MENU (HAMBURGER) ---
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a');
-
-    if (hamburger) {
-        // Otwieranie/Zamykanie po kliknięciu w hamburgera
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Automatyczne zamykanie menu po kliknięciu w dowolny link
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+    if (!FORM_ENDPOINT) {
+      const subject = form.querySelector('input[name="_subject"]').value;
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summarise(form))}`;
+      status.textContent = 'Otworzyliśmy Twój program pocztowy. Dołącz pliki i wyślij wiadomość.';
+      status.classList.add('is-ok');
+      form.querySelectorAll(':disabled').forEach((el) => { el.disabled = false; });
+      return;
     }
+
+    status.textContent = 'Wysyłanie…';
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      status.textContent = okText;
+      status.classList.add('is-ok');
+      form.querySelectorAll('input[type="radio"]:checked').forEach((r) => r.dispatchEvent(new Event('change', { bubbles: true })));
+    } catch (err) {
+      status.textContent = `Nie udało się wysłać. Napisz do nas na ${CONTACT_EMAIL}.`;
+      status.classList.add('is-err');
+    } finally {
+      form.querySelectorAll(':disabled').forEach((el) => { el.disabled = false; });
+    }
+  });
+}
+
+wireForm('kreator-form', 'Dziękujemy! Projekt trafił do Geblon. Teraz kup produkt na Allegro i podaj w wiadomości ten sam e-mail.');
+wireForm('kontakt-form', 'Dziękujemy! Odpowiemy najszybciej, jak to możliwe.');
+
+/* ---------- Rok w stopce ---------- */
+document.getElementById('rok').textContent = new Date().getFullYear();

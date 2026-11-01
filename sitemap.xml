@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.geblon.pl/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-imie-rita.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-feniks-dedykacja.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-slubne-julia-adam.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-50-lat-razem.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-dwa-domy.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-chrzest-aniolki.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/pudelko-podziekowanie-nauczyciel.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/wizytowka-dlugopis-geblon.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/realizacje/dlugopis-grawer-bordowy.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/pudelko-ciemne-dedykacja.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/pudelko-jasne-dowolny-tekst.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/pudelko-jasne-28cm.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/pudelko-jasne-22cm.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/wizytowki-aluminiowe-premium.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/wizytowki-aluminiowe-grubsze.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/dlugopis-z-grawerem.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.geblon.pl/images/produkty/adresowka-dla-psa-kota.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.geblon.pl/llms.txt</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>

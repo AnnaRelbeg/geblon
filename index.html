@@ -1,53 +1,646 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEBLON | Wykończenia Wnętrz Bydgoszcz</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/GeblonFavicon.PNG">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #1a1a1a;
-            color: #fcfcfc;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            padding: 2rem;
-        }
-        .divider {
-            width: 60px;
-            height: 1px;
-            background-color: #D4AF37;
-            margin: 0 auto 2rem;
-        }
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            font-size: clamp(1.4rem, 4vw, 2rem);
-            letter-spacing: 0.02em;
-            margin-bottom: 1rem;
-            color: #fcfcfc;
-        }
-        p {
-            font-weight: 300;
-            font-size: 0.95rem;
-            color: #aaaaaa;
-            letter-spacing: 0.04em;
-            line-height: 1.7;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pudełka z grawerem, metalowe wizytówki i długopisy | Geblon</title>
+<meta name="description" content="Grawerowane drewniane pudełka na prezent (chrzest, ślub, złote gody, 18 urodziny), metalowe wizytówki i długopisy z grawerem laserowym. Projekt w cenie, zakup na Allegro.">
+<link rel="canonical" href="https://www.geblon.pl/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#151A24">
+<meta name="author" content="Geblon, Grzegorz Gebler">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Geblon">
+<meta property="og:title" content="Geblon: pudełka z grawerem, metalowe wizytówki i długopisy">
+<meta property="og:description" content="Personalizowane prezenty z grawerem laserowym. Wybierz produkt, prześlij projekt lub tekst i zamów bezpiecznie na Allegro.">
+<meta property="og:url" content="https://www.geblon.pl/">
+<meta property="og:image" content="https://www.geblon.pl/images/og-geblon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grawerowane pudełka drewniane, metalowa wizytówka i długopis Geblon przy laserze xTool">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="images/logo/geblon-ikona.svg" type="image/svg+xml">
+<link rel="icon" href="images/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="video/geblon-header-poster.webp" type="image/webp">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.geblon.pl/#organizacja",
+      "name": "Geblon",
+      "alternateName": "Geblon Grawer Laserowy",
+      "url": "https://www.geblon.pl/",
+      "logo": "https://www.geblon.pl/images/logo/geblon-ikona.svg",
+      "image": "https://www.geblon.pl/images/og-geblon.jpg",
+      "description": "Polska pracownia graweru laserowego. Personalizowane drewniane pudełka na prezent, metalowe wizytówki aluminiowe i długopisy z grawerem, sprzedawane przez sklep Geblon na Allegro.",
+      "email": "grzegorz@geblon.pl",
+      "telephone": "+48 518 250 365",
+      "areaServed": { "@type": "Country", "name": "Polska" },
+      "knowsAbout": ["grawer laserowy", "grawerowanie drewna", "grawerowanie aluminium", "personalizowane prezenty", "metalowe wizytówki", "pudełka na pamiątkę chrztu", "prezenty ślubne z dedykacją"],
+      "founder": { "@id": "https://www.geblon.pl/#grzegorz" },
+      "sameAs": ["https://allegro.pl/uzytkownik/Geblon"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "obsługa klienta",
+        "email": "grzegorz@geblon.pl",
+        "telephone": "+48 518 250 365",
+        "availableLanguage": ["pl"]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.geblon.pl/#grzegorz",
+      "name": "Grzegorz Gebler",
+      "jobTitle": "Założyciel Geblon",
+      "worksFor": { "@id": "https://www.geblon.pl/#organizacja" },
+      "sameAs": ["https://www.linkedin.com/in/grzegorz-gebler/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.geblon.pl/#strona",
+      "url": "https://www.geblon.pl/",
+      "name": "Geblon",
+      "inLanguage": "pl-PL",
+      "publisher": { "@id": "https://www.geblon.pl/#organizacja" }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.geblon.pl/#produkty",
+      "name": "Produkty Geblon z grawerem laserowym",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": {
+          "@type": "Product", "name": "Drewniane pudełko prezentowe z dedykacją, ciemne (bejcowane)",
+          "image": "https://www.geblon.pl/images/produkty/pudelko-ciemne-dedykacja.jpg",
+          "description": "Ciemne, bejcowane drewniane pudełko 28 × 17 × 8 cm z metalowym zapięciem i grawerem laserowym według Twojego projektu.",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "drewno",
+          "size": "28 × 17 × 8 cm",
+          "offers": { "@type": "Offer", "price": "99.90", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/eleganckie-drewniane-pudelko-prezentowe-pamiatkowe-z-twoja-dedykacja-4ecc1ae5-017c-48ad-b6aa-e2c8d6b7344b?offerId=18721234377", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 2, "item": {
+          "@type": "Product", "name": "Personalizowane drewniane pudełko prezentowe z grawerem, jasne",
+          "image": "https://www.geblon.pl/images/produkty/pudelko-jasne-dowolny-tekst.jpg",
+          "description": "Jasne drewniane pudełko z łączeniami na wczepy i grawerem laserowym. Dowolny tekst lub projekt na wieczku i wewnątrz.",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "drewno",
+          "offers": { "@type": "Offer", "price": "91.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-005171c8-525b-4473-b1f9-ca1ec3f6abcc?offerId=19018626774", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 3, "item": {
+          "@type": "Product", "name": "Drewniane pudełko z grawerem, jasne, 28 cm",
+          "image": "https://www.geblon.pl/images/produkty/pudelko-jasne-28cm.jpg",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "drewno", "size": "28 × 17 × 8 cm",
+          "offers": { "@type": "Offer", "price": "87.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-ff05105c-a243-49b3-aa93-d6b43babc03e?offerId=19052208094", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 4, "item": {
+          "@type": "Product", "name": "Drewniane pudełko z grawerem, jasne, 22 cm",
+          "image": "https://www.geblon.pl/images/produkty/pudelko-jasne-22cm.jpg",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "drewno", "size": "22 × 17 × 8 cm",
+          "offers": { "@type": "Offer", "price": "78.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-3045b223-03c9-4c09-a32c-c0809ad6f27a?offerId=19050785885", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 5, "item": {
+          "@type": "Product", "name": "Metalowe wizytówki aluminiowe z grawerem, premium",
+          "image": "https://www.geblon.pl/images/produkty/wizytowki-aluminiowe-premium.jpg",
+          "description": "Aluminiowe wizytówki 86 × 54 mm z grawerem laserowym, w kilku kolorach, z kodem QR.",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "aluminium anodowane", "size": "86 × 54 mm",
+          "offers": { "@type": "Offer", "price": "2.90", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/metalowe-wizytowki-aluminiowe-z-twoim-grawerem-premium-klasa-firma-75257200-c6bd-4837-9505-a42404d91687?offerId=18592753427", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 6, "item": {
+          "@type": "Product", "name": "Grubsze wizytówki aluminiowe grawerowane",
+          "image": "https://www.geblon.pl/images/produkty/wizytowki-aluminiowe-grubsze.jpg",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "aluminium", "size": "86 × 54 mm",
+          "offers": { "@type": "Offer", "price": "4.60", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/grubsze-wizytowki-aluminiowe-grawerowane-solidniejsze-prestizowe-firma-bbfed8e9-40d2-4e32-aec9-289619604461?offerId=18971890688", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 7, "item": {
+          "@type": "Product", "name": "Metalowe pióro kulkowe z własnym grawerem",
+          "image": "https://www.geblon.pl/images/produkty/dlugopis-z-grawerem.jpg",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" }, "material": "metal",
+          "offers": { "@type": "Offer", "price": "16.20", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/czarne-pioro-kulkowe-metalowe-z-wlasnym-grawerem-prezent-premium-50a18a06-19f7-488a-a3ef-e78140457f07?offerId=18913062770", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } },
+        { "@type": "ListItem", "position": 8, "item": {
+          "@type": "Product", "name": "Adresówka dla psa lub kota z grawerem",
+          "image": "https://www.geblon.pl/images/produkty/adresowka-dla-psa-kota.jpg",
+          "brand": { "@id": "https://www.geblon.pl/#organizacja" },
+          "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://allegro.pl/produkt/identyfikator-imiennik-adresowka-dla-psa-lub-kota-idealny-prezent-8b0dec99-4111-4693-9b22-4ea9d6b21d90?offerId=18602080133", "seller": { "@id": "https://www.geblon.pl/#organizacja" } } } }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.geblon.pl/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Gdzie mogę kupić pudełko z grawerem Geblon?", "acceptedAnswer": { "@type": "Answer", "text": "Wszystkie produkty Geblon kupisz w sklepie Geblon na Allegro (allegro.pl/uzytkownik/Geblon). Płacisz przez Allegro i korzystasz z Ochrony Kupujących Allegro." } },
+        { "@type": "Question", "name": "Jakie są wymiary pudełek z grawerem?", "acceptedAnswer": { "@type": "Answer", "text": "Pudełko jasne ma trzy rozmiary: 22 × 17 × 8 cm, 28 × 17 × 8 cm oraz 30 × 20 × 13 cm. Pudełko ciemne (bejcowane) ma wymiary 28 × 17 × 8 cm." } },
+        { "@type": "Question", "name": "Jak duży może być grawer na pudełku?", "acceptedAnswer": { "@type": "Answer", "text": "Jedno pole graweru ma 10 × 10 cm. Na jednym pudełku można wygrawerować kilka pól, na zewnątrz wieczka i w jego środku. Większy projekt dzielimy na pola i grawerujemy je kolejno." } },
+        { "@type": "Question", "name": "Czy można wygrawerować tekst wewnątrz wieczka?", "acceptedAnswer": { "@type": "Answer", "text": "Tak. Wewnętrzna strona wieczka to dobre miejsce na dłuższą dedykację, błogosławieństwo lub list. Możesz zamówić grawer na zewnątrz, w środku albo w obu miejscach." } },
+        { "@type": "Question", "name": "Czy grawerujecie obie strony metalowej wizytówki?", "acceptedAnswer": { "@type": "Answer", "text": "Tak. Wizytówki aluminiowe 86 × 54 mm możemy grawerować z przodu i z tyłu, na przykład dane kontaktowe z przodu, a logo lub kod QR z tyłu." } },
+        { "@type": "Question", "name": "Jak przekazać projekt lub tekst do graweru?", "acceptedAnswer": { "@type": "Answer", "text": "Przez kreator na stronie geblon.pl (gotowy plik albo tekst z motywem), w wiadomości do sprzedającego na Allegro lub e-mailem na grzegorz@geblon.pl." } },
+        { "@type": "Question", "name": "Jaki plik najlepiej przesłać do graweru laserowego?", "acceptedAnswer": { "@type": "Answer", "text": "Najlepszy jest plik wektorowy SVG lub PDF. Sprawdzi się też ostry, czarno-biały plik PNG lub JPG o wysokiej rozdzielczości. Zdjęcia i kolorowe grafiki też przyjmujemy: przygotujemy z nich projekt do graweru." } },
+        { "@type": "Question", "name": "Na jakie okazje pasuje pudełko z grawerem?", "acceptedAnswer": { "@type": "Answer", "text": "Najczęściej na chrzest i komunię, ślub, rocznicę ślubu i złote gody, 18 urodziny, jako podziękowanie dla nauczyciela lub trenera, dla rodziny mieszkającej za granicą oraz jako prezent firmowy z logo." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
-    <div class="divider"></div>
-    <h1>Strona niedostępna</h1>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<!-- ============ NAWIGACJA ============ -->
+<header class="nav">
+  <nav class="nav__inner" aria-label="Główna nawigacja">
+    <a class="brand" href="#top" aria-label="Geblon, strona główna">
+      <svg width="30" height="30" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="#C8A46A" stroke-width="5" stroke-linecap="round"><circle cx="60" cy="60" r="34"/><line x1="60" y1="8" x2="60" y2="20"/><line x1="60" y1="100" x2="60" y2="112"/><line x1="8" y1="60" x2="20" y2="60"/><line x1="100" y1="60" x2="112" y2="60"/></g><circle cx="60" cy="60" r="8" fill="#F6F3EE"/></svg>
+      <span>GEBLON</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otwórz menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="menu">
+      <li><a href="#produkty">Produkty</a></li>
+      <li><a href="#realizacje">Realizacje</a></li>
+      <li><a href="#kreator">Kreator</a></li>
+      <li><a href="#dedykacje">Dedykacje</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a class="btn btn--gold btn--sm" href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">Sklep na Allegro <span aria-hidden="true">↗</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="tresc">
+
+<!-- ============ HERO (wideo w tle) ============ -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <video class="hero__video" muted loop playsinline preload="none" poster="video/geblon-header-poster.webp" aria-hidden="true" data-src-webm="video/geblon-header.webm" data-src-mp4="video/geblon-header.mp4"></video>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <p class="eyebrow">PRACOWNIA GRAWERU LASEROWEGO</p>
+    <h1 id="hero-h">Grawerowane pudełka, wizytówki i <em>prezenty z dedykacją</em></h1>
+    <p class="hero__lead">Drewniane pudełka na chrzest, ślub i złote gody, metalowe wizytówki i długopisy z Twoim grawerem. Prześlij projekt lub tekst, a my wygrawerujemy go laserem. Kupujesz bezpiecznie w sklepie Geblon na Allegro.</p>
+    <div class="hero__cta">
+      <a class="btn btn--gold" href="#produkty">Zobacz produkty</a>
+      <a class="btn btn--ghost-light" href="#kreator">Prześlij swój projekt</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUKTY Z ALLEGRO ============ -->
+<section class="section section--navy" id="produkty" aria-labelledby="prod-h">
+  <div class="wrap">
+    <div class="section__head section__head--split">
+      <div>
+        <p class="eyebrow">SKLEP GEBLON NA ALLEGRO</p>
+        <h2 id="prod-h">Nasze produkty</h2>
+      </div>
+      <a class="link-arrow" href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">Wszystkie oferty na Allegro →</a>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtruj produkty">
+      <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">Wszystkie</button>
+      <button type="button" class="chip" data-filter="pudelka" aria-pressed="false">Pudełka</button>
+      <button type="button" class="chip" data-filter="wizytowki" aria-pressed="false">Wizytówki</button>
+      <button type="button" class="chip" data-filter="dlugopisy" aria-pressed="false">Długopisy</button>
+      <button type="button" class="chip" data-filter="inne" aria-pressed="false">Dla zwierząt</button>
+    </div>
+
+    <ul class="grid-products" id="lista-produktow">
+      <li class="pcard" data-cat="pudelka">
+        <a class="pcard__img" href="https://allegro.pl/produkt/eleganckie-drewniane-pudelko-prezentowe-pamiatkowe-z-twoja-dedykacja-4ecc1ae5-017c-48ad-b6aa-e2c8d6b7344b?offerId=18721234377" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/pudelko-ciemne-dedykacja.webp" type="image/webp"><img src="images/produkty/pudelko-ciemne-dedykacja.jpg" alt="Ciemne drewniane pudełko z grawerem Twój dowolny tekst lub projekt" width="720" height="682" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/eleganckie-drewniane-pudelko-prezentowe-pamiatkowe-z-twoja-dedykacja-4ecc1ae5-017c-48ad-b6aa-e2c8d6b7344b?offerId=18721234377" target="_blank" rel="noopener">Eleganckie ciemne pudełko prezentowe z Twoją dedykacją, 28 × 17 × 8 cm</a></h3>
+          <p class="pcard__price">99,90 <span>zł</span></p>
+          <p class="pcard__ship">110,39 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/eleganckie-drewniane-pudelko-prezentowe-pamiatkowe-z-twoja-dedykacja-4ecc1ae5-017c-48ad-b6aa-e2c8d6b7344b?offerId=18721234377" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="pudelka">
+        <a class="pcard__img" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-005171c8-525b-4473-b1f9-ca1ec3f6abcc?offerId=19018626774" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/pudelko-jasne-dowolny-tekst.webp" type="image/webp"><img src="images/produkty/pudelko-jasne-dowolny-tekst.jpg" alt="Jasne drewniane pudełko z grawerem Twój dowolny tekst lub projekt" width="720" height="645" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-005171c8-525b-4473-b1f9-ca1ec3f6abcc?offerId=19018626774" target="_blank" rel="noopener">Personalizowane jasne pudełko prezentowe z grawerem</a></h3>
+          <p class="pcard__price">91,00 <span>zł</span></p>
+          <p class="pcard__ship">101,49 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-005171c8-525b-4473-b1f9-ca1ec3f6abcc?offerId=19018626774" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="pudelka">
+        <a class="pcard__img" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-ff05105c-a243-49b3-aa93-d6b43babc03e?offerId=19052208094" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/pudelko-jasne-28cm.webp" type="image/webp"><img src="images/produkty/pudelko-jasne-28cm.jpg" alt="Jasne pudełko z grawerem o długości 28 cm z zaznaczonymi wymiarami" width="720" height="556" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-ff05105c-a243-49b3-aa93-d6b43babc03e?offerId=19052208094" target="_blank" rel="noopener">Drewniane pudełko z grawerem, jasne, 28 × 17 × 8 cm</a></h3>
+          <p class="pcard__price">87,00 <span>zł</span></p>
+          <p class="pcard__ship">97,49 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-ff05105c-a243-49b3-aa93-d6b43babc03e?offerId=19052208094" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="pudelka">
+        <a class="pcard__img" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-3045b223-03c9-4c09-a32c-c0809ad6f27a?offerId=19050785885" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/pudelko-jasne-22cm.webp" type="image/webp"><img src="images/produkty/pudelko-jasne-22cm.jpg" alt="Jasne pudełko z grawerem o długości 22 cm z zaznaczonymi wymiarami" width="720" height="556" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-3045b223-03c9-4c09-a32c-c0809ad6f27a?offerId=19050785885" target="_blank" rel="noopener">Drewniane pudełko z grawerem, jasne, 22 × 17 × 8 cm</a></h3>
+          <p class="pcard__price">78,00 <span>zł</span></p>
+          <p class="pcard__ship">88,49 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/personalizowane-eleganckie-drewniane-pudelko-prezentowe-idealny-prezent-3045b223-03c9-4c09-a32c-c0809ad6f27a?offerId=19050785885" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="wizytowki">
+        <a class="pcard__img" href="https://allegro.pl/produkt/metalowe-wizytowki-aluminiowe-z-twoim-grawerem-premium-klasa-firma-75257200-c6bd-4837-9505-a42404d91687?offerId=18592753427" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/wizytowki-aluminiowe-premium.webp" type="image/webp"><img src="images/produkty/wizytowki-aluminiowe-premium.jpg" alt="Czarna metalowa wizytówka z grawerem logo i kodem QR" width="720" height="452" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/metalowe-wizytowki-aluminiowe-z-twoim-grawerem-premium-klasa-firma-75257200-c6bd-4837-9505-a42404d91687?offerId=18592753427" target="_blank" rel="noopener">Metalowe wizytówki aluminiowe z Twoim grawerem, premium</a></h3>
+          <p class="pcard__price">2,90 <span>zł</span><small> / szt.</small></p>
+          <p class="pcard__ship">13,39 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/metalowe-wizytowki-aluminiowe-z-twoim-grawerem-premium-klasa-firma-75257200-c6bd-4837-9505-a42404d91687?offerId=18592753427" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="wizytowki">
+        <a class="pcard__img" href="https://allegro.pl/produkt/grubsze-wizytowki-aluminiowe-grawerowane-solidniejsze-prestizowe-firma-bbfed8e9-40d2-4e32-aec9-289619604461?offerId=18971890688" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/wizytowki-aluminiowe-grubsze.webp" type="image/webp"><img src="images/produkty/wizytowki-aluminiowe-grubsze.jpg" alt="Grubsza czarna wizytówka aluminiowa z grawerem" width="602" height="395" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/grubsze-wizytowki-aluminiowe-grawerowane-solidniejsze-prestizowe-firma-bbfed8e9-40d2-4e32-aec9-289619604461?offerId=18971890688" target="_blank" rel="noopener">Grubsze wizytówki aluminiowe grawerowane, solidniejsze i prestiżowe</a></h3>
+          <p class="pcard__price">4,60 <span>zł</span><small> / szt.</small></p>
+          <p class="pcard__ship">15,09 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/grubsze-wizytowki-aluminiowe-grawerowane-solidniejsze-prestizowe-firma-bbfed8e9-40d2-4e32-aec9-289619604461?offerId=18971890688" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="dlugopisy">
+        <a class="pcard__img" href="https://allegro.pl/produkt/czarne-pioro-kulkowe-metalowe-z-wlasnym-grawerem-prezent-premium-50a18a06-19f7-488a-a3ef-e78140457f07?offerId=18913062770" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/dlugopis-z-grawerem.webp" type="image/webp"><img src="images/produkty/dlugopis-z-grawerem.jpg" alt="Metalowe pióro kulkowe z grawerem Grawer na nasadce" width="673" height="720" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/czarne-pioro-kulkowe-metalowe-z-wlasnym-grawerem-prezent-premium-50a18a06-19f7-488a-a3ef-e78140457f07?offerId=18913062770" target="_blank" rel="noopener">Metalowe pióro kulkowe z własnym grawerem, prezent premium</a></h3>
+          <p class="pcard__price">16,20 <span>zł</span></p>
+          <p class="pcard__ship">26,69 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/czarne-pioro-kulkowe-metalowe-z-wlasnym-grawerem-prezent-premium-50a18a06-19f7-488a-a3ef-e78140457f07?offerId=18913062770" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+      <li class="pcard" data-cat="inne">
+        <a class="pcard__img" href="https://allegro.pl/produkt/identyfikator-imiennik-adresowka-dla-psa-lub-kota-idealny-prezent-8b0dec99-4111-4693-9b22-4ea9d6b21d90?offerId=18602080133" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><picture><source srcset="images/produkty/adresowka-dla-psa-kota.webp" type="image/webp"><img src="images/produkty/adresowka-dla-psa-kota.jpg" alt="Pies z grawerowaną adresówką w kształcie serca z imieniem Bruno" width="720" height="656" loading="lazy"></picture></a>
+        <div class="pcard__body">
+          <h3 class="pcard__title"><a href="https://allegro.pl/produkt/identyfikator-imiennik-adresowka-dla-psa-lub-kota-idealny-prezent-8b0dec99-4111-4693-9b22-4ea9d6b21d90?offerId=18602080133" target="_blank" rel="noopener">Adresówka dla psa lub kota z grawerem imienia i numeru telefonu</a></h3>
+          <p class="pcard__price">29,00 <span>zł</span></p>
+          <p class="pcard__ship">39,49 zł z dostawą</p>
+          <a class="buy" href="https://allegro.pl/produkt/identyfikator-imiennik-adresowka-dla-psa-lub-kota-idealny-prezent-8b0dec99-4111-4693-9b22-4ea9d6b21d90?offerId=18602080133" target="_blank" rel="noopener">Dodaj do koszyka</a>
+          <p class="pcard__note">Przejdziesz do oferty na Allegro</p>
+        </div>
+      </li>
+    </ul>
+    <p class="note-light">Ceny zgodne z ofertami na Allegro w dniu publikacji strony. Aktualna cena jest zawsze na Allegro.</p>
+  </div>
+</section>
+
+<!-- ============ PARAMETRY (fakty, information gain) ============ -->
+<section class="section" aria-labelledby="spec-h">
+  <div class="wrap">
+    <div class="section__head section__head--center">
+      <p class="eyebrow eyebrow--dark">ZANIM ZAMÓWISZ</p>
+      <h2 id="spec-h">Wymiary, materiały i pole graweru</h2>
+      <p class="lead">Najważniejsze parametry w jednym miejscu, żeby łatwo dobrać produkt do okazji i treści dedykacji.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="spec">
+        <caption class="sr-only">Parametry produktów Geblon</caption>
+        <thead>
+          <tr><th scope="col">Produkt</th><th scope="col">Wymiary</th><th scope="col">Materiał i wykończenie</th><th scope="col">Gdzie grawerujemy</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Pudełko jasne</th><td>22 × 17 × 8 cm<br>28 × 17 × 8 cm<br>30 × 20 × 13 cm</td><td>Jasne drewno, łączenia na wczepy, metalowe zapięcie. Grawer w kolorze ciemnego brązu.</td><td>Wieczko na zewnątrz i w środku</td></tr>
+          <tr><th scope="row">Pudełko ciemne</th><td>28 × 17 × 8 cm</td><td>Drewno bejcowane na ciemny brąz, metalowe zapięcie. Grawer odsłania jasne drewno.</td><td>Wieczko na zewnątrz i w środku</td></tr>
+          <tr><th scope="row">Wizytówka metalowa</th><td>86 × 54 mm (format karty płatniczej)</td><td>Aluminium anodowane, wersja standardowa i grubsza, kilka kolorów.</td><td>Przód i tył</td></tr>
+          <tr><th scope="row">Długopis</th><td>Standardowy rozmiar pióra kulkowego</td><td>Metalowa obudowa.</td><td>Korpus lub nasadka</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="facts">
+      <li><strong>Pole graweru 10 × 10 cm.</strong> Tyle mieści jedno przejście lasera. Na jednym wieczku zmieszczą się dwa pola obok siebie albo jeden większy projekt grawerowany w częściach.</li>
+      <li><strong>Grawer w środku wieczka.</strong> Idealny na dłuższe teksty: list, błogosławieństwo, życzenia z podpisami.</li>
+      <li><strong>Grawer laserowy, nie nadruk.</strong> Wzór jest wypalony w drewnie lub metalu, więc nie ściera się i nie blaknie.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ REALIZACJE (pokaz slajdów) ============ -->
+<section class="section section--navy" id="realizacje" aria-labelledby="real-h">
+  <div class="wrap">
+    <div class="section__head section__head--center">
+      <p class="eyebrow">REALIZACJE</p>
+      <h2 id="real-h">Każdy grawer to inna historia</h2>
+      <p class="lead lead--light">Pudełka na chrzest, ślub i złote gody, podziękowania, wizytówki i długopisy dla firm.</p>
+    </div>
+
+    <div class="show" role="region" aria-roledescription="karuzela" aria-label="Realizacje Geblon">
+      <div class="show__stage">
+        <figure class="show__slide is-on" data-tag="CHRZEST I URODZINY">
+          <picture><source srcset="images/realizacje/pudelko-imie-rita.webp" type="image/webp"><img src="images/realizacje/pudelko-imie-rita.jpg" alt="Jasne drewniane pudełko z grawerowanym imieniem Rita w kwiatowym wianku" width="1050" height="1400" style="object-position:center 60%"></picture>
+          <figcaption>Imię w kwiatowym wianku</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="PREZENT Z DEDYKACJĄ">
+          <picture><source srcset="images/realizacje/pudelko-feniks-dedykacja.webp" type="image/webp"><img src="images/realizacje/pudelko-feniks-dedykacja.jpg" alt="Jasne pudełko z grawerem feniksa i dedykacją Z myślą o Tobie" width="1326" height="1187" loading="lazy"></picture>
+          <figcaption>Z myślą o Tobie</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="ŚLUB">
+          <picture><source srcset="images/realizacje/pudelko-slubne-julia-adam.webp" type="image/webp"><img src="images/realizacje/pudelko-slubne-julia-adam.jpg" alt="Jasne pudełko ślubne z portretem pary, imionami Julia i Adam oraz obrączkami" width="1326" height="1187" loading="lazy"></picture>
+          <figcaption>Julia i Adam</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="ZŁOTE GODY">
+          <picture><source srcset="images/realizacje/pudelko-50-lat-razem.webp" type="image/webp"><img src="images/realizacje/pudelko-50-lat-razem.jpg" alt="Ciemne pudełko z grawerem 50 lat razem, kwiatami i obrączkami" width="1400" height="933" loading="lazy"></picture>
+          <figcaption>50 lat razem</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="RODZINA NA ODLEGŁOŚĆ">
+          <picture><source srcset="images/realizacje/pudelko-dwa-domy.webp" type="image/webp"><img src="images/realizacje/pudelko-dwa-domy.jpg" alt="Ciemne pudełko z grawerem Dwa domy. Jedna rodzina z panoramą Polski i Chicago" width="1400" height="933" loading="lazy"></picture>
+          <figcaption>Dwa domy. Jedna rodzina.</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="GRAWER WEWNĄTRZ WIECZKA">
+          <picture><source srcset="images/realizacje/pudelko-chrzest-aniolki.webp" type="image/webp"><img src="images/realizacje/pudelko-chrzest-aniolki.jpg" alt="Wnętrze wieczka z grawerem aniołków i błogosławieństwem na pamiątkę chrztu świętego" width="1400" height="933" loading="lazy" style="object-position:center 35%"></picture>
+          <figcaption>Pamiątka chrztu świętego</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="PODZIĘKOWANIE">
+          <picture><source srcset="images/realizacje/pudelko-podziekowanie-nauczyciel.webp" type="image/webp"><img src="images/realizacje/pudelko-podziekowanie-nauczyciel.jpg" alt="Jasne pudełko z ptakiem na gałązce i podziękowaniem dla nauczycielki" width="1050" height="1400" loading="lazy" style="object-position:center 62%"></picture>
+          <figcaption>Dla Pani Wiktorii</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="DLA FIRM">
+          <picture><source srcset="images/realizacje/wizytowka-dlugopis-geblon.webp" type="image/webp"><img src="images/realizacje/wizytowka-dlugopis-geblon.jpg" alt="Granatowa metalowa wizytówka GEBLON z kodem QR i grawerowany długopis" width="1086" height="1448" loading="lazy" style="object-position:center 55%"></picture>
+          <figcaption>Wizytówka i długopis GEBLON</figcaption>
+        </figure>
+        <figure class="show__slide" data-tag="PREZENT PREMIUM">
+          <picture><source srcset="images/realizacje/dlugopis-grawer-bordowy.webp" type="image/webp"><img src="images/realizacje/dlugopis-grawer-bordowy.jpg" alt="Bordowy długopis z grawerem na nasadce" width="673" height="720" loading="lazy"></picture>
+          <figcaption>Długopis z Twoim grawerem</figcaption>
+        </figure>
+        <div class="show__shade" aria-hidden="true"></div>
+        <div class="show__caption" aria-live="polite">
+          <p class="show__tag"></p>
+          <p class="show__title"></p>
+        </div>
+        <div class="show__controls">
+          <span class="show__count" aria-hidden="true"></span>
+          <button type="button" class="round" data-dir="-1" aria-label="Poprzednie zdjęcie"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="round" data-dir="1" aria-label="Następne zdjęcie"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="show__bar" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="show__thumbs" role="group" aria-label="Wybierz zdjęcie"></div>
+    </div>
+    <p class="center"><a class="btn btn--gold" href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">Zobacz wszystkie wzory na Allegro</a></p>
+  </div>
+</section>
+
+<!-- ============ JAK ZAMÓWIĆ ============ -->
+<section class="section" aria-labelledby="jak-h">
+  <div class="wrap">
+    <h2 id="jak-h" class="center">Jak zamówić?</h2>
+    <ol class="steps">
+      <li><span class="steps__n">1</span><div><h3>Wybierz produkt</h3><p>Pudełko jasne lub ciemne, metalowe wizytówki albo długopis.</p></div></li>
+      <li><span class="steps__n">2</span><div><h3>Prześlij projekt</h3><p>W kreatorze poniżej wgraj gotowy plik albo wpisz tekst i dołącz motyw.</p></div></li>
+      <li><span class="steps__n">3</span><div><h3>Kup na Allegro</h3><p>Płacisz bezpiecznie i korzystasz z Ochrony Kupujących Allegro.</p></div></li>
+      <li><span class="steps__n">4</span><div><h3>Grawerujemy i wysyłamy</h3><p>Przygotowujemy projekt, grawerujemy laserem i starannie pakujemy.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ KREATOR ============ -->
+<section class="section section--paper" id="kreator" aria-labelledby="kre-h">
+  <div class="wrap wrap--narrow">
+    <div class="section__head section__head--center">
+      <p class="eyebrow eyebrow--dark">KREATOR GRAWERU</p>
+      <h2 id="kre-h">Prześlij nam swój pomysł</h2>
+      <p class="lead">Wybierz produkt. Dla każdej strony wgraj gotowy projekt albo wpisz tekst i dołącz motyw, który Ci się podoba. Resztą zajmiemy się my.</p>
+    </div>
+
+    <form id="kreator-form" class="kreator" novalidate>
+      <fieldset class="kreator__step">
+        <legend>1 · Wybierz produkt</legend>
+        <div class="picks">
+          <label class="pick"><input type="radio" name="produkt" value="Pudełko jasne" data-kind="box" checked><span class="pick__img"><img src="images/produkty/pudelko-jasne-28cm.jpg" alt="" width="720" height="556" loading="lazy"></span><span class="pick__txt"><strong>Pudełko jasne</strong><small>3 rozmiary</small></span></label>
+          <label class="pick"><input type="radio" name="produkt" value="Pudełko ciemne 28 × 17 × 8 cm" data-kind="box"><span class="pick__img"><img src="images/produkty/pudelko-ciemne-dedykacja.jpg" alt="" width="720" height="682" loading="lazy"></span><span class="pick__txt"><strong>Pudełko ciemne</strong><small>28 × 17 × 8 cm</small></span></label>
+          <label class="pick"><input type="radio" name="produkt" value="Wizytówka metalowa 86 × 54 mm" data-kind="card"><span class="pick__img"><img src="images/produkty/wizytowki-aluminiowe-premium.jpg" alt="" width="720" height="452" loading="lazy"></span><span class="pick__txt"><strong>Wizytówka metalowa</strong><small>86 × 54 mm</small></span></label>
+        </div>
+        <div class="sizes" id="rozmiary">
+          <span>Rozmiar:</span>
+          <label class="chip-radio"><input type="radio" name="rozmiar" value="22 × 17 × 8 cm"><span>22 × 17 × 8 cm</span></label>
+          <label class="chip-radio"><input type="radio" name="rozmiar" value="28 × 17 × 8 cm" checked><span>28 × 17 × 8 cm</span></label>
+          <label class="chip-radio"><input type="radio" name="rozmiar" value="30 × 20 × 13 cm"><span>30 × 20 × 13 cm</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="kreator__step">
+        <legend>2 · Co grawerujemy?</legend>
+        <div class="surfaces">
+          <div class="surface" data-surface="1">
+            <div class="surface__head"><h3 class="surface__title" data-box="Wieczko na zewnątrz" data-card="Przód wizytówki">Wieczko na zewnątrz</h3><span>opcjonalnie</span></div>
+            <div class="modes" role="radiogroup" aria-label="Sposób przekazania projektu">
+              <label class="chip-radio"><input type="radio" name="s1_tryb" value="plik"><span>Mój gotowy projekt</span></label>
+              <label class="chip-radio"><input type="radio" name="s1_tryb" value="tekst" checked><span>Tekst + motyw</span></label>
+              <label class="chip-radio"><input type="radio" name="s1_tryb" value="brak"><span>Bez graweru</span></label>
+            </div>
+            <div class="mode mode--plik">
+              <label class="upload"><input type="file" name="s1_projekt" accept="image/*,.svg,.pdf"><span>Wgraj projekt</span></label>
+              <p class="hint">PNG, JPG, SVG lub PDF. Najlepiej czarno-biały projekt.</p>
+            </div>
+            <div class="mode mode--tekst">
+              <label class="field-label">Tekst do wygrawerowania
+                <textarea name="s1_tekst" rows="3" data-box="Np. Na pamiątkę Chrztu Świętego, Zuzanna, 14.06.2026" data-card="Np. imię i nazwisko, stanowisko, telefon, e-mail" placeholder="Np. Na pamiątkę Chrztu Świętego, Zuzanna, 14.06.2026"></textarea>
+              </label>
+              <label class="upload upload--sm"><input type="file" name="s1_motyw" accept="image/*"><span>Dołącz motyw</span></label>
+              <p class="hint">Motyw (opcjonalnie): grafika, która Ci się podoba, np. kwiaty, aniołki, logo.</p>
+            </div>
+            <div class="mode mode--brak"><p class="hint">Ta strona zostanie bez graweru.</p></div>
+            <div class="preview" hidden></div>
+          </div>
+
+          <div class="surface" data-surface="2">
+            <div class="surface__head"><h3 class="surface__title" data-box="Wieczko w środku" data-card="Tył wizytówki">Wieczko w środku</h3><span>opcjonalnie</span></div>
+            <div class="modes" role="radiogroup" aria-label="Sposób przekazania projektu">
+              <label class="chip-radio"><input type="radio" name="s2_tryb" value="plik"><span>Mój gotowy projekt</span></label>
+              <label class="chip-radio"><input type="radio" name="s2_tryb" value="tekst"><span>Tekst + motyw</span></label>
+              <label class="chip-radio"><input type="radio" name="s2_tryb" value="brak" checked><span>Bez graweru</span></label>
+            </div>
+            <div class="mode mode--plik">
+              <label class="upload"><input type="file" name="s2_projekt" accept="image/*,.svg,.pdf"><span>Wgraj projekt</span></label>
+              <p class="hint">PNG, JPG, SVG lub PDF. Najlepiej czarno-biały projekt.</p>
+            </div>
+            <div class="mode mode--tekst">
+              <label class="field-label">Tekst do wygrawerowania
+                <textarea name="s2_tekst" rows="3" data-box="Np. dłuższa dedykacja, życzenia lub list" data-card="Np. logo, hasło firmy, kod QR do strony" placeholder="Np. dłuższa dedykacja, życzenia lub list"></textarea>
+              </label>
+              <label class="upload upload--sm"><input type="file" name="s2_motyw" accept="image/*"><span>Dołącz motyw</span></label>
+              <p class="hint">Motyw (opcjonalnie): grafika, która Ci się podoba.</p>
+            </div>
+            <div class="mode mode--brak"><p class="hint">Ta strona zostanie bez graweru.</p></div>
+            <div class="preview" hidden></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="kreator__step">
+        <legend>3 · Wyślij</legend>
+        <div class="row">
+          <label class="field-label">Imię i nazwisko<input type="text" name="imie" required autocomplete="name"></label>
+          <label class="field-label">E-mail<input type="email" name="email" required autocomplete="email"></label>
+        </div>
+        <label class="field-label">Uwagi (opcjonalnie)<textarea name="uwagi" rows="2" placeholder="Np. ulubiona czcionka, termin, okazja"></textarea></label>
+        <input type="hidden" name="_subject" value="Nowy projekt z kreatora geblon.pl">
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="actions">
+          <button type="submit" class="btn btn--dark">Wyślij projekt do Geblon</button>
+          <a class="buy buy--inline" href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">Zamów na Allegro</a>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+<!-- ============ DEDYKACJE (treść ekspercka, information gain) ============ -->
+<section class="section" id="dedykacje" aria-labelledby="ded-h">
+  <div class="wrap">
+    <div class="section__head section__head--center">
+      <p class="eyebrow eyebrow--dark">INSPIRACJE</p>
+      <h2 id="ded-h">Gotowe dedykacje na pudełko z grawerem</h2>
+      <p class="lead">Nie wiesz, co napisać? Skopiuj jeden z tekstów i zmień imiona oraz daty. Krótki tekst pasuje na wieczko, dłuższy do środka.</p>
+    </div>
+    <div class="ded">
+      <article class="ded__item">
+        <h3>Dedykacja na chrzest</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>Na pamiątkę Chrztu Świętego<br>Zuzanna<br>14.06.2026</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Niech Twoje życie będzie pełne światła, miłości i dobrych ludzi. Zawsze będziemy obok. Matka Chrzestna i Ojciec Chrzestny</blockquote>
+      </article>
+      <article class="ded__item">
+        <h3>Dedykacja na ślub</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>Julia i Adam<br>28.11.2026</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Na nowej drodze życia życzymy Wam miłości, która z każdym rokiem staje się mocniejsza. Świadkowie</blockquote>
+      </article>
+      <article class="ded__item">
+        <h3>Dedykacja na złote gody</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>50 lat razem<br>1976 – 2026</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Dziękujemy Wam za miłość, która stworzyła naszą rodzinę. Jesteście naszą największą inspiracją. Dzieci i wnuki</blockquote>
+      </article>
+      <article class="ded__item">
+        <h3>Dedykacja na 18 urodziny</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>18 lat<br>Igor<br>07.11.2026</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Odwagi w dążeniu do marzeń i ludzi, którzy zawsze będą Twoim wsparciem. Wszystkiego najlepszego na nowej, dorosłej drodze!</blockquote>
+      </article>
+      <article class="ded__item">
+        <h3>Podziękowanie dla nauczyciela</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>Dla Pani Wiktorii<br>z podziękowaniem</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Dziękujemy za serce, cierpliwość i wszystkie wspólne chwile. Piękne wspomnienia zostają na zawsze. Dzieci i rodzice</blockquote>
+      </article>
+      <article class="ded__item">
+        <h3>Prezent dla rodziny za granicą</h3>
+        <p class="ded__where">Na wieczko</p>
+        <blockquote>Dwa domy. Jedna rodzina.</blockquote>
+        <p class="ded__where">Do środka</p>
+        <blockquote>Nieważne, ile kilometrów nas dzieli. Zawsze blisko, zawsze razem.</blockquote>
+      </article>
+    </div>
+    <div class="tips">
+      <h3>Jak przygotować projekt do graweru laserowego</h3>
+      <ul>
+        <li><strong>Najlepszy format to wektor (SVG lub PDF).</strong> Krawędzie są wtedy idealnie ostre w każdej skali.</li>
+        <li><strong>Grafika rastrowa: czarno-biała i ostra.</strong> PNG lub JPG w wysokiej rozdzielczości, bez cieni i półprzezroczystości.</li>
+        <li><strong>Zdjęcia też się nadają.</strong> Z portretu lub zdjęcia przygotujemy ilustrację liniową do graweru, jak na pudełku ślubnym Julii i Adama.</li>
+        <li><strong>Mniej znaczy więcej.</strong> Na wieczku najlepiej wygląda krótki tekst i jeden motyw. Dłuższe treści przenieś do środka.</li>
+        <li><strong>Sprawdź pisownię imion i dat.</strong> Grawer jest trwały, dlatego każdy tekst przepisujemy dokładnie tak, jak go podasz.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="section section--paper" id="kontakt" aria-labelledby="kon-h">
+  <div class="wrap contact">
+    <div class="contact__info">
+      <p class="eyebrow eyebrow--dark">KONTAKT</p>
+      <h2 id="kon-h">Napisz do nas</h2>
+      <p class="lead">Pytanie, nietypowy pomysł albo zamówienie dla firmy? Odpowiemy najszybciej, jak to możliwe.</p>
+      <dl>
+        <div><dt>E-mail</dt><dd><a href="mailto:grzegorz@geblon.pl">grzegorz@geblon.pl</a></dd></div>
+        <div><dt>Telefon</dt><dd><a href="tel:+48518250365">+48 518 250 365</a></dd></div>
+        <div><dt>Allegro</dt><dd><a href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">allegro.pl/uzytkownik/Geblon</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/grzegorz-gebler/" target="_blank" rel="noopener">Grzegorz Gebler</a></dd></div>
+      </dl>
+    </div>
+    <form id="kontakt-form" class="card-form" novalidate>
+      <div class="row">
+        <label class="field-label">Imię i nazwisko lub firma<input type="text" name="imie" required autocomplete="name"></label>
+        <label class="field-label">E-mail<input type="email" name="email" required autocomplete="email"></label>
+      </div>
+      <div class="row">
+        <label class="field-label">Telefon (opcjonalnie)<input type="tel" name="telefon" autocomplete="tel"></label>
+        <label class="field-label">Temat
+          <select name="temat">
+            <option>Pudełko z grawerem</option>
+            <option>Metalowe wizytówki</option>
+            <option>Długopisy z grawerem</option>
+            <option>Zamówienie dla firmy</option>
+            <option>Pytanie o zamówienie z Allegro</option>
+            <option>Inne</option>
+          </select>
+        </label>
+      </div>
+      <label class="field-label">Wiadomość<textarea name="wiadomosc" rows="5" required placeholder="Opisz swój pomysł, ilość i termin"></textarea></label>
+      <input type="hidden" name="_subject" value="Wiadomość z formularza geblon.pl">
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn--dark">Wyślij wiadomość</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap wrap--faq">
+    <h2 id="faq-h" class="center">Najczęstsze pytania</h2>
+    <div class="faq">
+      <details><summary>Gdzie mogę kupić pudełko z grawerem Geblon?</summary><p>Wszystkie produkty Geblon kupisz w <a href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">sklepie Geblon na Allegro</a>. Płacisz przez Allegro i korzystasz z Ochrony Kupujących Allegro.</p></details>
+      <details><summary>Jakie są wymiary pudełek z grawerem?</summary><p>Pudełko jasne ma trzy rozmiary: 22 × 17 × 8 cm, 28 × 17 × 8 cm oraz 30 × 20 × 13 cm. Pudełko ciemne (bejcowane) ma wymiary 28 × 17 × 8 cm.</p></details>
+      <details><summary>Jak duży może być grawer na pudełku?</summary><p>Jedno pole graweru ma 10 × 10 cm. Na jednym pudełku można wygrawerować kilka pól, na zewnątrz wieczka i w jego środku. Większy projekt dzielimy na pola i grawerujemy je kolejno.</p></details>
+      <details><summary>Czy można wygrawerować tekst wewnątrz wieczka?</summary><p>Tak. Wewnętrzna strona wieczka to dobre miejsce na dłuższą dedykację, błogosławieństwo lub list. Możesz zamówić grawer na zewnątrz, w środku albo w obu miejscach.</p></details>
+      <details><summary>Czy grawerujecie obie strony metalowej wizytówki?</summary><p>Tak. Wizytówki aluminiowe 86 × 54 mm możemy grawerować z przodu i z tyłu, na przykład dane kontaktowe z przodu, a logo lub kod QR z tyłu.</p></details>
+      <details><summary>Jak przekazać projekt lub tekst do graweru?</summary><p>Przez <a href="#kreator">kreator</a> na tej stronie (gotowy plik albo tekst z motywem), w wiadomości do sprzedającego na Allegro lub e-mailem na <a href="mailto:grzegorz@geblon.pl">grzegorz@geblon.pl</a>.</p></details>
+      <details><summary>Jaki plik najlepiej przesłać do graweru laserowego?</summary><p>Najlepszy jest plik wektorowy SVG lub PDF. Sprawdzi się też ostry, czarno-biały plik PNG lub JPG o wysokiej rozdzielczości. Zdjęcia i kolorowe grafiki też przyjmujemy: przygotujemy z nich projekt do graweru.</p></details>
+      <details><summary>Na jakie okazje pasuje pudełko z grawerem?</summary><p>Najczęściej na chrzest i komunię, ślub, rocznicę ślubu i złote gody, 18 urodziny, jako podziękowanie dla nauczyciela lub trenera, dla rodziny mieszkającej za granicą oraz jako prezent firmowy z logo.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ STOPKA ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <p class="footer__brand">GEBLON</p>
+      <p class="footer__desc">Pracownia graweru laserowego. Pudełka z grawerem, metalowe wizytówki i długopisy.</p>
+    </div>
+    <nav aria-label="Stopka">
+      <ul>
+        <li><a href="#produkty">Produkty</a></li>
+        <li><a href="#realizacje">Realizacje</a></li>
+        <li><a href="#kreator">Kreator</a></li>
+        <li><a href="#dedykacje">Dedykacje</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="https://allegro.pl/uzytkownik/Geblon" target="_blank" rel="noopener">Allegro</a></li>
+        <li><a href="https://www.linkedin.com/in/grzegorz-gebler/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© <span id="rok">2026</span> Geblon</span>
+    <span><a href="mailto:grzegorz@geblon.pl">grzegorz@geblon.pl</a> · <a href="tel:+48518250365">+48 518 250 365</a></span>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>

@@ -207,6 +207,7 @@ h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 4.4vw, 
 .upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .upload span::before { content: "↑ "; }
 .hint { margin: 0; font-size: 12px; color: var(--muted); }
+.hint--email { font-size: 13px; color: var(--ink); background: #F0EDE8; border-left: 3px solid var(--gold); padding: 10px 12px; border-radius: 0 4px 4px 0; }
 .preview { display: flex; flex-direction: column; gap: 8px; }
 .preview[hidden] { display: none; }
 .preview__item { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 8px; }

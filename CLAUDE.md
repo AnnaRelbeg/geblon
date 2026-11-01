@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for Claude (and anyone else) working on this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project overview
 
@@ -9,6 +9,14 @@ Static one-page website for **Geblon**, a Polish laser engraving workshop run by
 No build step, no framework, no package manager. Open `index.html` in a browser to preview, or serve the folder with any static server (`npx serve .`).
 
 Production domain is **https://www.geblon.pl/** (GitHub Pages, set in `CNAME`; keep that file). If it changes, update it in: `index.html` (canonical, Open Graph, JSON-LD `@id`s and URLs), `sitemap.xml`, `robots.txt`, `llms.txt`.
+
+## Development
+
+```
+npx serve .        # serve locally at http://localhost:3000
+```
+
+There is no build, lint, or test step. Validation is manual: open the browser, check the section you changed, run the JSON-LD through Google's Rich Results Test if structured data changed.
 
 ## File structure
 
@@ -42,6 +50,42 @@ Production domain is **https://www.geblon.pl/** (GitHub Pages, set in `CNAME`; k
 9. Kontakt: details + contact form
 10. FAQ (mirrors the FAQPage JSON-LD; keep both in sync)
 11. Footer (navy)
+
+## JS architecture (`script.js`)
+
+Each feature is an IIFE — they share no globals except the two config constants at the top:
+
+```js
+const FORM_ENDPOINT = '';   // empty = mailto fallback
+const CONTACT_EMAIL = 'grzegorz@geblon.pl';
+```
+
+**`data-*` attributes that drive JS behaviour** (these are the contract between HTML and JS):
+
+| Attribute | Where | Used for |
+|---|---|---|
+| `data-srcWebm` / `data-srcMp4` | `<video class="hero__video">` | Lazy-loaded video sources (injected by JS on wide screens) |
+| `data-filter` | `.chip` buttons | Product filter category key (`all`, `pudelka`, `wizytowki`, etc.) |
+| `data-cat` | `.pcard` product cards | Matched against active filter chip |
+| `data-kind` | `input[name="produkt"]` radio | `"box"` or `"card"` — drives surface title and placeholder text in kreator |
+| `data-box` / `data-card` | `.surface__title`, `<textarea>` | Text content swapped when `data-kind` changes |
+| `data-surface` | `.surface` wrappers | Numbered `"1"` / `"2"` — used to scope mode radio `name`s (`s1_tryb`, `s2_tryb`) |
+| `data-tag` | `.show__slide` | Displayed in the slideshow tag label |
+
+**Kreator state flow:** product radio change → `applyKind()` (shows/hides size selector, swaps surface labels) → mode radio change → `applyMode(surface)` (sets `data-mode` on `.surface`) → CSS shows/hides the correct `.mode` pane → on submit, hidden-pane inputs are temporarily disabled so they are not included in FormData.
+
+**Form submission (`wireForm`):** both forms share one handler. When `FORM_ENDPOINT` is empty it falls back to `mailto:` with a plain-text summary via `summarise(form)`. When set, it POSTs `multipart/form-data`. Hidden fields `_subject` (email subject) and `_gotcha` (spam honeypot) are present in the HTML.
+
+## CSS architecture (`style.css`)
+
+Design tokens are in `:root` — always use variables, never hardcode colours or radii. Key layout utilities:
+
+- `.wrap` / `.wrap--narrow` / `.wrap--faq` — max-width containers
+- `.section` — vertical padding via `clamp`; `.section--navy` and `.section--paper` set the background
+- `--gutter: clamp(16px, 4vw, 40px)` — used for horizontal padding everywhere
+- `scroll-padding-top: 72px` on `html` — matches the sticky nav height; update both if nav height changes
+
+Component class prefixes follow BEM-lite: `.nav__`, `.hero__`, `.pcard`, `.show__`, `.surface`, `.filters`.
 
 ## Design tokens
 

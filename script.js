@@ -12,7 +12,7 @@
    Gdy pole jest puste, formularze otwierają program pocztowy
    z gotową treścią (bez załączników).
    --------------------------------------------------------- */
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://formspree.io/f/xkoqkaea';
 const CONTACT_EMAIL = 'grzegorz@geblon.pl';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

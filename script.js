@@ -272,12 +272,29 @@ function wireForm(id, okText) {
 
     status.textContent = 'Wysyłanie…';
     try {
+      // Collect files before disabling inputs, then disable them so Formspree
+      // (free plan) doesn't reject the submission due to file uploads.
+      const uploadedFiles = Array.from(form.querySelectorAll('input[type="file"]'))
+        .filter(inp => !inp.disabled && inp.files && inp.files[0])
+        .map(inp => inp.files[0]);
+      form.querySelectorAll('input[type="file"]').forEach(inp => { inp.disabled = true; });
+
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
-      status.textContent = okText;
-      status.classList.add('is-ok');
       form.querySelectorAll('input[type="radio"]:checked').forEach((r) => r.dispatchEvent(new Event('change', { bubbles: true })));
+
+      if (uploadedFiles.length) {
+        const email = form.querySelector('[name="email"]');
+        const imie = form.querySelector('[name="imie"]');
+        const subject = encodeURIComponent(`Pliki projektu – ${imie ? imie.value : ''}`);
+        const body = encodeURIComponent(`Cześć, przesyłam pliki do zlecenia złożonego przez kreator.\n\nImię: ${imie ? imie.value : ''}\nPliki: ${uploadedFiles.map(f => f.name).join(', ')}`);
+        const mailHref = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+        status.innerHTML = `${okText}<br><br>Masz plik projektu? <a href="${mailHref}">Wyślij go e-mailem</a> (kliknij link, dołącz plik i wyślij).`;
+      } else {
+        status.textContent = okText;
+      }
+      status.classList.add('is-ok');
     } catch (err) {
       status.textContent = `Nie udało się wysłać. Napisz do nas na ${CONTACT_EMAIL}.`;
       status.classList.add('is-err');
